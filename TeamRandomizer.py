@@ -6,6 +6,11 @@ import random
 NUMBER_OF_TRIES = 0  # To limit recursion attempts for randomization
 
 
+class NotEnoughPlayers(Exception):
+    """Exception raised if user doesn't add atleast 2 players."""
+    pass
+
+
 class Person:
     """
     Takes a persons name and initializes it.
@@ -30,7 +35,7 @@ class Player(Person):
     # Only using superclass to practice inheritance. Otherwise unneccesary.
 
     def __init__(self, name, rank):
-        self._name = name
+        super().__init__(name)
         self._rank = rank
 
     def get_rank(self):
@@ -150,15 +155,16 @@ def finalize(team_1, team_2):
     print(team_2_final)
 
     print()
-    redo = input("Would you like to re-balance teams? (y/n): ")         # Rebalances teams
+    redo = input("Would you like to re-balance teams? (y/n): ")  # Rebalances teams
     if redo == "y" or redo == "Y":
+        print("New Balanced Teams: ")
         randomizer(combine_teams)
     elif redo == "n" or redo == "N":
         print("Goodluck bois!")
 
     print()
 
-    restart = input("Would you like to change players? (y/n): ")        # Resets program
+    restart = input("Would you like to restart? (y/n): ")        # Resets program
     if restart == "y" or restart == "Y":
         start()
     elif restart == "n" or restart == "N":
@@ -178,7 +184,7 @@ def start():
     basil = Player("basil", 10)
     nab = Player("nab", 10)
     chris = Player("chris", 10)
-    garret = Player("garret", 10)
+    garrett = Player("garrett", 10)
 
     # Second picks
     ervin = Player("ervin", 8)
@@ -200,7 +206,7 @@ def start():
     juan = Player("juan", 2)
 
     # Used to compare with user string input
-    list_of_all_players = [basil, nab, chris, garret, ervin, brad, sw8r, teetee, baran, taha, koala, meek, tiff, joey,
+    list_of_all_players = [basil, nab, chris, garrett, ervin, brad, sw8r, teetee, baran, taha, koala, meek, tiff, joey,
                            juan]
 
     players_playing = []
@@ -209,17 +215,18 @@ def start():
     list_of_players_string = add_players.split()
     for player_string in list_of_players_string:
         for player in list_of_all_players:
-            if player_string == player.get_name():  # Add exception if name doesnt exist
+            if player_string == player.get_name():
                 players_playing.append(player)
 
     print()
-    if len(players_playing) == 1:                       # Requires atleast 2 people playing
-        print("Need more than 1 person playing!")
-    elif len(players_playing) == 0:
-        print("Nice you have no friends!")
-    else:
-        print("Balanced Teams: ")
-        randomizer(players_playing)
+    try:
+        if len(players_playing) >= 2:               # Requires atleast 2 people playing or raises exception
+            print("Balanced Teams: ")
+            randomizer(players_playing)
+        else:
+            raise NotEnoughPlayers
+    except NotEnoughPlayers:
+        print("You need to add atleast 2 players!")
 
 
 def main():
@@ -239,7 +246,7 @@ def main():
     print()
     print("List of current players in database:")
     print("     ###########################################################")
-    print("     |   basil       nab         chris       garret      ervin |")
+    print("     |   basil       nab         chris       garrett     ervin |")
     print("     |   teetee      koala       tiff        baran       taha  |")
     print("     |   brad        sw8r        meek        joey        juan  |")
     print("     |                                                         |")
