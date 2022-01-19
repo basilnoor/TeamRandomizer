@@ -41,8 +41,8 @@ class Player(Person):
     def get_rank(self):
         return self._rank
 
-    # def set_rank(self, new_rank):     !Not implementing due to nature of program currently!
-    #     self._rank = new_rank
+    def set_rank(self, new_rank):
+        self._rank = new_rank
 
 
 def randomizer(list_of_players):
@@ -109,7 +109,7 @@ def balance_checker(team_1, team_2):
             randomizer(combine_teams)
         else:
             print("Teams cannot be balanced.")
-            exit()  # Add exception for when teams can never be balanced
+            exit()
 
 
 def team_power(team_1, team_2):
@@ -179,7 +179,7 @@ def start():
     User inputs string list of all players they want to play.
     """
 
-    # List of players
+    # List of players (Add new players here and to the list_of_all_players)
     # First picks
     basil = Player("basil", 10)
     nab = Player("nab", 10)
@@ -189,16 +189,17 @@ def start():
     # Second picks
     ervin = Player("ervin", 8)
     sw8r = Player("sw8r", 8)
+    brad = Player("brad", 8)
 
     # Third Picks
     teetee = Player("teetee", 6)
-    brad = Player("brad", 6)
     baran = Player("baran", 6)
 
     # Forth Picks
     taha = Player("taha", 4)
     koala = Player("koala", 4)
     meek = Player("meek", 4)
+    ntry = Player("ntry", 4)
 
     # Last Picks :(
     tiff = Player("tiff", 2)
@@ -207,7 +208,7 @@ def start():
 
     # Used to compare with user string input
     list_of_all_players = [basil, nab, chris, garrett, ervin, brad, sw8r, teetee, baran, taha, koala, meek, tiff, joey,
-                           juan]
+                           juan, ntry]
 
     players_playing = []
 
@@ -249,7 +250,7 @@ def main():
     print("     |   basil       nab         chris       garrett     ervin |")
     print("     |   teetee      koala       tiff        baran       taha  |")
     print("     |   brad        sw8r        meek        joey        juan  |")
-    print("     |                                                         |")
+    print("     |   ntry                                                  |")
     print("     ###########################################################")
     print()
     start()
