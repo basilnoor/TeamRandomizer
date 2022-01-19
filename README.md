@@ -1,7 +1,7 @@
 # TeamRandomizer
 
-Takes a list of player names and balances them into 2 teams based on ranks. Players and ranks are added to the class beforehand.
-Will be working on this in the future to allow users to add players w/rank :)
+Player objects, holding the player's name and rank, are made beforehand in the start() function.
+Will be working on allowing users to add players w/rank themselves :)
 
 Project Goals:
 
