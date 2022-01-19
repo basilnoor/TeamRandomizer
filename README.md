@@ -1,7 +1,6 @@
 # TeamRandomizer
 
 Player objects, holding the player's name and rank, are made beforehand in the start() function.
-
 Will be working on allowing users to add players w/rank themselves :)
 
 Project Goals:
