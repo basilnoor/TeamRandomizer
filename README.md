@@ -1,6 +1,10 @@
 # TeamRandomizer
 
 
+### Languages/Frameworks/Tools used:
+
+- Python, Pycharm
+
 ### Project Goals:
 
 - Made a class-based program implementing inheritance in Python.
